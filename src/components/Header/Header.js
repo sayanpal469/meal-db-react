@@ -5,8 +5,8 @@ import CustomLink from '../CustomLink/CustomLink';
 const Header = () => {
     return (
         <div className='flex justify-between px-10 py-5'>
-            <Link className='text-blue-500 font-sans text-3xl' to='/'>Meal Db</Link>
-            <nav className='flex gap-5 text-xl'>
+            <Link className='text-blue-500 font-mono text-3xl ' to='/'>Meal Db</Link>
+            <nav className='flex gap-5 text-xl font-mono'>
                 <CustomLink to='/'>Home</CustomLink>
                 <CustomLink to='/meals'>Foods</CustomLink>
                 <CustomLink to='/details'>Details</CustomLink>
