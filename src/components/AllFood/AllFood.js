@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Meal from '../Meal/Meal';
+import { DetailContext } from '../../App';
 
 const Meals = () => {
     const [searchText, setSearchText] = useState('')
-    const [meals, setMeals] = useState([])
+    const [meals, setMeals] = useContext(DetailContext)
     
     const searchFood = food => {
         setSearchText(food.target.value)
@@ -12,7 +13,13 @@ const Meals = () => {
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
         fetch(url)
         .then(res => res.json())
-        .then(data => setMeals(data.meals))
+        .then(data => {
+            if(data.meals) {
+                setMeals(data.meals)
+            } else{
+                alert('Sorry, This Food are not avalible in our resturant')
+            }
+        })
     }, [searchText])
     return (
         <div className=''>
